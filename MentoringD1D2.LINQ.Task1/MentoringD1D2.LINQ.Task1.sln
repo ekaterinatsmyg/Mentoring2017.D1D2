@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MentoringD1D2.LINQ.Task1", "MentoringD1D2.LINQ.Task1\MentoringD1D2.LINQ.Task1.csproj", "{E0439939-51F9-4AA1-B156-5CD4F2B32A8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MentoringD1D2.LINQ.Task1.Helpers", "MentoringD1D2.LINQ.Task1.Helpers\MentoringD1D2.LINQ.Task1.Helpers.csproj", "{2B027E03-93A7-44CD-BBA2-1EFD07B4B38B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MentoringD1D2.LINQ.Task1.Data", "MentoringD1D2.LINQ.Task1.Data\MentoringD1D2.LINQ.Task1.Data.csproj", "{DF2EF990-69DA-4C8A-B8A3-06594B000B81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MentoringD1D2.LINQ.Task1.Diagnostics", "MentoringD1D2.LINQ.Task1.Diagnostics\MentoringD1D2.LINQ.Task1.Diagnostics.csproj", "{0C55BBE9-C8D5-40DB-86EA-FF35002A7715}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E0439939-51F9-4AA1-B156-5CD4F2B32A8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0439939-51F9-4AA1-B156-5CD4F2B32A8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0439939-51F9-4AA1-B156-5CD4F2B32A8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0439939-51F9-4AA1-B156-5CD4F2B32A8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B027E03-93A7-44CD-BBA2-1EFD07B4B38B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B027E03-93A7-44CD-BBA2-1EFD07B4B38B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B027E03-93A7-44CD-BBA2-1EFD07B4B38B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B027E03-93A7-44CD-BBA2-1EFD07B4B38B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF2EF990-69DA-4C8A-B8A3-06594B000B81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF2EF990-69DA-4C8A-B8A3-06594B000B81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF2EF990-69DA-4C8A-B8A3-06594B000B81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF2EF990-69DA-4C8A-B8A3-06594B000B81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C55BBE9-C8D5-40DB-86EA-FF35002A7715}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C55BBE9-C8D5-40DB-86EA-FF35002A7715}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C55BBE9-C8D5-40DB-86EA-FF35002A7715}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C55BBE9-C8D5-40DB-86EA-FF35002A7715}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

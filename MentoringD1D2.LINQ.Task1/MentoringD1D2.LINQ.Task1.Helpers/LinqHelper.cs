@@ -111,7 +111,7 @@ namespace MentoringD1D2.LINQ.Task1.Helpers
 
             switch (ordering)
             {
-                
+
                 case ClientOrdering.ByFirstOrderDate:
                     result = result.OrderBy(x => x.FirstDay);
                     break;
@@ -157,7 +157,7 @@ namespace MentoringD1D2.LINQ.Task1.Helpers
         /// <param name="products">The initial list of products.</param>
         /// <returns>The list of products that is grouped by Category than by total number of units that are in stock and sorted by price.</returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public static ILookup<string, Dictionary<int,List<ProductModel>>> GetGroupedProducts(this IList<ProductModel> products)
+        public static ILookup<string, Dictionary<int, List<ProductModel>>> GetGroupedProducts(this IList<ProductModel> products)
         {
             if (products == null)
             {
@@ -182,12 +182,12 @@ namespace MentoringD1D2.LINQ.Task1.Helpers
             return
                 products.Select(p =>
                 {
-                    if (p.UnitPrice < 70000M)
+                    if (p.UnitPrice < 10.000M)
                         return new KeyValuePair<PriceRange, ProductModel>(PriceRange.Low, p);
-                    if (p.UnitPrice < 150000M)
+                    if (p.UnitPrice < 30.000M)
                         return new KeyValuePair<PriceRange, ProductModel>(PriceRange.Middle, p);
                     return new KeyValuePair<PriceRange, ProductModel>(PriceRange.High, p);
-                }).GroupBy(res => res.Key).ToDictionary(x => x.Key, x => x.Select(res=> res.Value).ToList());
+                }).GroupBy(res => res.Key).ToDictionary(x => x.Key, x => x.Select(res => res.Value).ToList());
         }
 
         /// <summary>
@@ -222,13 +222,45 @@ namespace MentoringD1D2.LINQ.Task1.Helpers
             return clients.GroupBy(c => c.City).OrderBy(c => c.Key).ToDictionary(res => res.Key, res => res.Select(r => r.Orders.Count()).Average());
         }
 
-        public static ILookup<int, KeyValuePair<ClientModel, int>> GetClientStatisticsByMonth(this IList<ClientModel> clients)
+
+        /// <summary>
+        /// Get statis of clients' activity by criteria.
+        /// </summary>
+        /// <param name="clients">The initial list of cients.</param>
+        /// <param name="keySelector">The criteria of statis of clients' activity</param>
+        /// <returns>The statis of clients' activity by criteria.</returns>
+        public static Dictionary<ClientModel, Dictionary<int, decimal>> GetClientStatisticsByCriteria(this IList<ClientModel> clients, Func<OrderModel, int> keySelector)
         {
             if (clients == null)
             {
                 throw new ArgumentNullException(nameof(clients));
             }
-            return clients.GroupBy(c => c.Orders.SelectMany(o => o.OrderDate.Month));
+            return clients.Select(c => new
+            {
+                Client = c,
+                Statistic = c.Orders.GroupBy(keySelector)
+                            .Select(g => new Tuple<int, decimal>(g.Key, g.Select(res => res.TotalPrice).Average())).ToDictionary(res => res.Item1, res => res.Item2)
+            }).ToDictionary(res => res.Client, res => res.Statistic);
+
+        }
+
+        /// <summary>
+        /// Get statis of clients' activity by year and month.
+        /// </summary>
+        /// <param name="clients">The initial list of cients.</param>
+        /// <returns>The statis of clients' activity by year and month.</returns>
+        public static Dictionary<ClientModel, Dictionary<Tuple<int, int>, decimal>> GetClientStatisticsByDate(this IList<ClientModel> clients)
+        {
+            if (clients == null)
+            {
+                throw new ArgumentNullException(nameof(clients));
+            }
+            return clients.Select(c => new
+            {
+                Client = c,
+                Statistic = c.Orders.GroupBy(o => new Tuple<int, int>(o.OrderDate.Year, o.OrderDate.Month))
+                            .Select(g => new Tuple<Tuple<int, int>, decimal>(g.Key, g.Select(res => res.TotalPrice).Average())).ToDictionary(res => res.Item1, res => res.Item2)
+            }).ToDictionary(res => res.Client, res => res.Statistic);
 
         }
 
@@ -269,6 +301,6 @@ namespace MentoringD1D2.LINQ.Task1.Helpers
             return isPhoneNumberRegex.IsMatch(value);
         }
 
-        
+
     }
 }

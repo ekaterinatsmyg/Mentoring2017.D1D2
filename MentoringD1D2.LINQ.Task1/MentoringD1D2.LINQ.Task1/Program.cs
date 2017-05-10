@@ -166,7 +166,7 @@ namespace MentoringD1D2.LINQ.Task1
 
             //8.The eighth point.
             //var groupedByPriceProducts = products.GroupByPriceCategory();
-            //foreach (var product in groupedByPriceProducts)
+            //foreach (var product in groupedByPriceProducts.OrderByDescending(x => x.Key))
             //{
             //    Console.WriteLine(product.Key);
             //    product.Value.ForEach(res => Console.WriteLine(res.ToString()));
@@ -191,20 +191,44 @@ namespace MentoringD1D2.LINQ.Task1
 
 
             //10. The tenth point.
-            var result = clients.GetClientStatisticsByMonth();
-            foreach (var res in result)
-            {
-                foreach (var key in res.Key)
-                {
-                    Console.WriteLine(key);
-                    foreach (var k in res.Select(x =>x).ToList())
-                    {
-                        Console.WriteLine(k.Value);
-                    }
-                }
-            }
+            //var result = clients.GetClientStatisticsByCriteria(o=> o.OrderDate.Month);
+            //foreach (var res in result)
+            //{
+
+            //    Console.WriteLine(res.Key.ToString());
+            //    foreach (var value in res.Value)
+            //    {
+            //        Console.WriteLine($"Month: {value.Key}");
+            //        Console.WriteLine($"Average total price by month: {value.Value}");
+            //    }
+            //}
+
+            //var result1= clients.GetClientStatisticsByCriteria(o => o.OrderDate.Year);
+            //foreach (var res in result1)
+            //{
+
+            //    Console.WriteLine(res.Key.ToString());
+            //    foreach (var value in res.Value)
+            //    {
+            //        Console.WriteLine($"Year: {value.Key}");
+            //        Console.WriteLine($"Average total price by year: {value.Value}");
+            //    }
+            //}
+
+            //var statistics = clients.GetClientStatisticsByDate();
+            //foreach (var res in statistics)
+            //{
+            //    Console.WriteLine(res.Key.ToString());
+            //    foreach (var value in res.Value)
+            //    {
+            //        Console.WriteLine($"Year: {value.Key.Item1} | Month: {value.Key.Item2}");
+            //        Console.WriteLine($"Average total price by year: {value.Value}");
+            //    }
+                
+            //}
 
             Console.ReadKey();
+
         }
     }
 }

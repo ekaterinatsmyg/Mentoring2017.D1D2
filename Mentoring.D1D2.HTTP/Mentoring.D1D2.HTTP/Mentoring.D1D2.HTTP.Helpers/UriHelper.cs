@@ -15,12 +15,7 @@ namespace Mentoring.D1D2.HTTP.Helpers
         /// <summary>
         /// The pattern that helps to determine whether the uri absolute or not.
         /// </summary>
-        private const string IsAbsoluteUrl = @"^https?://[\w\W]+";
-
-        /// <summary>
-        /// The regex that validate if the url is absolute.
-        /// </summary>
-        private static Regex absoluteUrlRegex = CreateRegEx(IsAbsoluteUrl);
+        private const string IsAbsoluteUrlPattern = @"^https?://[\w\W]+";
 
         /// <summary>
         /// Validate if uri ia absolute or not.
@@ -29,19 +24,9 @@ namespace Mentoring.D1D2.HTTP.Helpers
         /// <returns>Returns true if the uri is absolute, false - if no. </returns>
         public static bool IsAbsoluteUri(this string uri)
         {
+            var absoluteUrlRegex = new Regex(IsAbsoluteUrlPattern);
             return absoluteUrlRegex.IsMatch(uri);
         }
-
-        /// <summary>
-        /// Create an instance of regex type.
-        /// </summary>
-        /// <param name="pattern">The pattern of regex.</param>
-        /// <returns>An instance of regex type.</returns>
-        private static Regex CreateRegEx(string pattern)
-        {
-            const RegexOptions options = RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.ExplicitCapture;
-
-            return new Regex(pattern, options);
-        }
+        
     }
 }

@@ -1,11 +1,12 @@
 ﻿using NLog;
+using System.Diagnostics;
 
 namespace MentoringD1D2.HTTP.Diagnostics
 {
     /// <summary>
     /// Class to provide access to the standard logging.
     /// </summary>
-    public static class ApplicationLogger
+    public  class ApplicationLogger : ILogger
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         
@@ -14,7 +15,7 @@ namespace MentoringD1D2.HTTP.Diagnostics
         /// </summary>
         /// <param name="logMessageType">The levlel of the message to log.</param>
         /// <param name="message">The message to log.</param>
-        public static void LogMessage(LogMessageType logMessageType, string message)
+        public  void LogMessage(LogMessageType logMessageType, string message)
         {
             try
             {

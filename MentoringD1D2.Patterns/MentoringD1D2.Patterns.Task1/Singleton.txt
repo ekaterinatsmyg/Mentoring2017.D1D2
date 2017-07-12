@@ -1,0 +1,21 @@
+﻿public class Singleton
+
+{
+
+    private static Singleton instance; 
+
+    private Singleton()
+    {}
+ 
+    public static Singleton GetInstance()
+    {
+        if (instance == null)
+            instance = new Singleton();
+        return instance;
+    }
+}
+
+Минусы:
+1. Отсутствует потокобезопасность:
+	В строчке instance = new Singleton(); конструктор может выполниться после публикации ссылки в instance. В этом случае другой поток может увидеть, что instance не равно null, хотя код конструктора еще не выполнился.
+	Можно использовать подобную реализацию всегда, если класс, который вы хотите объявить, заведомо не будет вызываться из нескольких потоков.
